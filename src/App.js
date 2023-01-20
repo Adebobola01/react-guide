@@ -39,7 +39,19 @@ class App extends Component {
   }
 
   
+  
+  
   render() {
+    let person = null;
+  
+    if(this.state.showPersons) {
+      person = <div>
+          <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
+          <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={ this.nameChangedHandler}  />
+          <Person name={this.state.persons[2].name} age={this.state.persons[2].age} clicked={this.switchNameHandler.bind(this, "muhy")} >I like anime</Person>
+        </div>
+    }
+
     const style = {
       border: "1px solid red",
       backgroundColor: "white",
@@ -49,13 +61,7 @@ class App extends Component {
       <div className="App">
         <h1>Adebobola's first time</h1>
         <button onClick={this.togglePerson} style={style}>toggle</button>
-        { this.state.showPersons ? 
-          <div>
-            <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
-            <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={ this.nameChangedHandler}  />
-            <Person name={this.state.persons[2].name} age={this.state.persons[2].age} clicked={this.switchNameHandler.bind(this, "muhy")} >I like anime</Person>
-          </div> : null
-        }
+        {person}
       </div>
     )
   };
