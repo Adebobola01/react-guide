@@ -9,7 +9,8 @@ class App extends Component {
       { name: "Adebobola", age: 21 },
       { name: "Remilekun", age: 21 },
       {name: "Oyedunmade", age: 21}
-    ]
+    ],
+    showPersons: false 
   }
 
   nameChangedHandler = (event) => {
@@ -30,6 +31,13 @@ class App extends Component {
     ]})
   }
 
+  togglePerson = () => {
+    let show = this.state.showPersons
+    this.setState({
+      showPersons: !show
+    })
+  }
+
   
   render() {
     const style = {
@@ -40,10 +48,14 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Adebobola's first time</h1>
-        <button onClick={this.switchNameHandler.bind(this, "bobo")} style={style}>switch</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={ this.nameChangedHandler}  />
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} clicked={this.switchNameHandler.bind(this, "muhy")} >I like anime</Person>
+        <button onClick={this.togglePerson} style={style}>toggle</button>
+        { this.state.showPersons ? 
+          <div>
+            <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
+            <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={ this.nameChangedHandler}  />
+            <Person name={this.state.persons[2].name} age={this.state.persons[2].age} clicked={this.switchNameHandler.bind(this, "muhy")} >I like anime</Person>
+          </div> : null
+        }
       </div>
     )
   };
