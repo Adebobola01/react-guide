@@ -45,11 +45,13 @@ class App extends Component {
     let person = null;
   
     if(this.state.showPersons) {
-      person = <div>
-          <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
-          <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={ this.nameChangedHandler}  />
-          <Person name={this.state.persons[2].name} age={this.state.persons[2].age} clicked={this.switchNameHandler.bind(this, "muhy")} >I like anime</Person>
+      person = (
+        <div>
+          {this.state.persons.map(person => {
+            return <Person name={person.name} age={person.age}/>
+          })}
         </div>
+      )
     }
 
     const style = {
