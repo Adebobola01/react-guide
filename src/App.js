@@ -1,21 +1,7 @@
 import React, { Component} from "react";
 import Person from "./Person/Person"
 import './App.css';
-import styled from "styled-components"
-
-const StyledButton = styled.button`
-  border: 1px solid green;
-  background-color: green;
-  border: 1px solid black;
-  padding: 8px;
-  color: white;
-  fontSize: 16px;
-
-  &:hover {
-    background-color: lightgreen;
-    cursor: pointer;
-  }
-`
+import ErrorBoundary from "./ErrorBoundary/ErrorBoundary"
 
 class App extends Component {
 
@@ -71,7 +57,9 @@ class App extends Component {
       person = (
         <div>
           {this.state.persons.map((person, personIndex) => {
-            return <Person name={person.name} age={person.age} click={this.deletePersonHandler.bind(this, personIndex)} key={person.id} changed={this.nameChangedHandler} />
+            return <ErrorBoundary key={person.id}>
+              <Person name={person.name} age={person.age} click={this.deletePersonHandler.bind(this, personIndex)} changed={this.nameChangedHandler} />
+            </ErrorBoundary>
           })}
         </div>
       )
@@ -90,7 +78,7 @@ class App extends Component {
       <div className="App">
         <h1>Adebobola's first time</h1>
         <p className={classes.join(" ")} >This is really working!</p>
-        <StyledButton onClick={this.togglePerson}>toggle</StyledButton>
+        <button className="button" onClick={this.togglePerson}>toggle</button>
         {person}
       </div>
     )
