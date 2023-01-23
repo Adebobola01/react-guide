@@ -1,6 +1,7 @@
 import React, { Component} from "react";
 import Persons from "../components/Persons/Persons"
 import './App.css';
+import Cockpit from "../components/Cockpit/Cockpit"
 
 class App extends Component {
 
@@ -60,20 +61,10 @@ class App extends Component {
       )
     }
 
-    const classes = [];
-    if (this.state.persons.length <= 2) {
-      classes.push("red")
-    }
-    if (this.state.persons.length <= 1) {
-      classes.push("bold")
-    }
-
 
     return (
       <div className="App">
-        <h1>Adebobola's first time</h1>
-        <p className={classes.join(" ")} >This is really working!</p>
-        <button className="button" onClick={this.togglePerson}>toggle</button>
+        <Cockpit clicked={this.togglePerson} showPersons={this.state.showPersons} persons={this.state.persons} />
         {person}
       </div>
     )
