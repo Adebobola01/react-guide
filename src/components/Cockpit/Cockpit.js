@@ -6,7 +6,7 @@ const Cockpit = (props) => {
 
     useEffect(() => {
         console.log("useEffect")
-    })
+    }, [])
 
     console.log("Cockpit rendering")
     const assignedClasses = [];
