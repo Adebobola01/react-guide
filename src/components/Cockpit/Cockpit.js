@@ -6,6 +6,9 @@ const Cockpit = (props) => {
 
     useEffect(() => {
         console.log("useEffect")
+        return () => {
+            console.log("cleanup on cockpit")
+        }
     }, [])
 
     console.log("Cockpit rendering")
