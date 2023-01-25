@@ -1,8 +1,13 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./Cockpit.css"
 
 
 const Cockpit = (props) => {
+
+    useEffect(() => {
+        console.log("useEffect")
+    })
+
     console.log("Cockpit rendering")
     const assignedClasses = [];
     let btnClass = "button";
