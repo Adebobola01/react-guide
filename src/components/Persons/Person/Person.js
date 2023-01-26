@@ -2,6 +2,8 @@ import React, {Component} from "react"
 import "./Person.css"
 import styled from "styled-components"
 
+import Aux from "../../../hoc/Auxiliary"
+
 const StyledDiv = styled.div`
     border: 1px solid #eee;
     margin: 10px auto;
@@ -16,11 +18,11 @@ const StyledDiv = styled.div`
 class Person extends Component{
     render(){
         return (
-            <StyledDiv>
+            <Aux>
                 <p onClick={this.props.click}> {this.props.name} is {this.props.age} years old </p>
                 <p>{this.props.children}</p>
                 <input type="text" onChange={this.props.changed} value={this.props.name} ></input>
-            </StyledDiv>
+            </Aux>
         )
     }
 }

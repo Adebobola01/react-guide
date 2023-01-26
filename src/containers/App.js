@@ -17,7 +17,8 @@ class App extends Component {
       { id: "jfka;f", name: "Oyedunmade", age: 21 }
     ],
     showPersons: false,
-    showCockpit: true
+    showCockpit: true,
+    changeCounter: 0,
   }
 
   static getDerivedStateFromProps(state, props){
@@ -30,12 +31,16 @@ class App extends Component {
   }
 
   nameChangedHandler = (event) => {
-    this.setState({
-      persons: [
-        {name: "Adebobola", age: 21},
-        { name: event.target.value, age: 21 },
-        { name: "Oyedunade", age: 21 }
-    ]})
+    this.setState((prevState, props) => {
+      return {
+        persons: [
+          { name: "Adebobola", age: 21 },
+          { name: event.target.value, age: 21 },
+          { name: "Oyedunade", age: 21 }
+        ],
+        changeCounter: prevState.changeCounter + 1,
+      }
+    })
   }
 
   switchNameHandler = (switchedName) => {
