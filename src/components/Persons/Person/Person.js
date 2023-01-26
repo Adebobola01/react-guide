@@ -1,7 +1,7 @@
 import React, {Component} from "react"
 import "./Person.css"
 import styled from "styled-components"
-
+import PropTypes from "prop-types"
 import Aux from "../../../hoc/Auxiliary"
 
 const StyledDiv = styled.div`
@@ -25,6 +25,13 @@ class Person extends Component{
             </Aux>
         )
     }
+}
+
+Person.propsTypes = {
+    click: PropTypes.func,
+    name: PropTypes.string,
+    age: PropTypes.number,
+    changed: PropTypes.func
 }
 
 export default Person;
