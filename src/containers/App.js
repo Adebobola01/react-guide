@@ -2,6 +2,7 @@ import React, { Component} from "react";
 import Persons from "../components/Persons/Persons"
 import './App.css';
 import Cockpit from "../components/Cockpit/Cockpit"
+import authContext from "../context/auth-context";
 
 class App extends Component {
 
@@ -85,14 +86,23 @@ class App extends Component {
         </div>
       )
     }
-
-
+    
+    
     return (
       <div className="App">
         <button onClick={() => { this.setState({ showCockpit: false }) }} >del Cockpit</button>
-        {this.state.showCockpit ? (<Cockpit clicked={this.togglePerson} showPersons={this.state.showPersons} persons={this.state.persons} title={this.props.appTitle} />) : null}
-        <button onClick={this.login}>Log in</button>
-        {person}
+        <authContext.Provider value={{Authenticated: this.state.Authenticated, login: this.login}}>
+          {this.state.showCockpit ? (
+            <Cockpit
+              clicked={this.togglePerson}
+              showPersons={this.state.showPersons}
+              persons={this.state.persons}
+              title={this.props.appTitle}
+            />
+            ) : null}
+            <button onClick={this.login}>Log in</button>
+          {person}`
+        </authContext.Provider>
       </div>
     )
   };
