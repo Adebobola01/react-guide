@@ -5,13 +5,13 @@ import "./Cockpit.css"
 const Cockpit = (props) => {
 
     useEffect(() => {
-        console.log("useEffect")
+        // console.log("useEffect")
         return () => {
-            console.log("cleanup on cockpit")
+            // console.log("cleanup on cockpit")
         }
     }, [])
 
-    console.log("Cockpit rendering")
+    // console.log("Cockpit rendering")
     const assignedClasses = [];
     let btnClass = "button";
     if (props.showPersons) {
