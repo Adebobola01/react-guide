@@ -2,7 +2,7 @@ import React, { Component} from "react";
 import Persons from "../components/Persons/Persons"
 import './App.css';
 import Cockpit from "../components/Cockpit/Cockpit"
-import authContext from "../context/auth-context";
+import AuthContext from "../context/auth-context";
 
 class App extends Component {
 
@@ -69,7 +69,8 @@ class App extends Component {
     })
   }
 
-  login = ()=>{
+  login = () => {
+    console.log("here")
     this.setState({Authenticated: true})
   }
   
@@ -91,7 +92,7 @@ class App extends Component {
     return (
       <div className="App">
         <button onClick={() => { this.setState({ showCockpit: false }) }} >del Cockpit</button>
-        <authContext.Provider value={{Authenticated: this.state.Authenticated, login: this.login}}>
+        <AuthContext.Provider value={{Authenticated: this.state.Authenticated, login: this.login}}>
           {this.state.showCockpit ? (
             <Cockpit
               clicked={this.togglePerson}
@@ -100,9 +101,8 @@ class App extends Component {
               title={this.props.appTitle}
             />
             ) : null}
-            <button onClick={this.login}>Log in</button>
-          {person}`
-        </authContext.Provider>
+          {person}
+        </AuthContext.Provider>
       </div>
     )
   };
